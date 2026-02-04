@@ -12,9 +12,13 @@ export default async function RecipesPage() {
   return (
     <main className="min-h-screen bg-white text-black px-6 py-12">
       <section className="max-w-5xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8">All Recipes</h1>
+        <h1 className="text-3xl font-bold mb-8 text-center text-orange-600">
+          All Recipes
+        </h1>
         <RecipeList recipes={data.recipes} />
       </section>
     </main>
   );
 }
+
+

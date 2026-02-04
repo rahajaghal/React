@@ -33,6 +33,8 @@
 
 import HeroSlider from "@/components/HeroSlider";
 import RecipeList from "@/components/RecipeList";
+import MealTypeCards from "@/components/MealTypeCards";
+import Link from "next/link";
 
 export default async function Home() {
   const res = await fetch("https://dummyjson.com/recipes");
@@ -41,23 +43,36 @@ export default async function Home() {
   const topRatedRecipes = data.recipes
     .filter((recipe) => recipe.rating >= 4.9)
     .sort((a, b) => b.rating - a.rating);
+  {
+    console.log(topRatedRecipes);
+  }
+
+  const mealTypes = Array.from(
+    new Set(
+      data.recipes
+        .flatMap((r) => (Array.isArray(r.mealType) ? r.mealType : [r.mealType]))
+        .filter(Boolean), // remove null/undefined
+    ),
+  );
+  {
+    console.log(mealTypes);
+  }
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100">
-
       {/* Hero Section */}
       <HeroSlider />
 
-      {/* Top Rated Recipes */}
+      {/* Top Rated Recipes Section */}
       <section className="px-6 py-14">
         <div className="max-w-5xl mx-auto">
-
           <h2 className="text-3xl font-bold mb-8 text-center text-orange-600">
-            ⭐ Top Rated Recipes
+            Top Rated Recipes
           </h2>
 
           <RecipeList recipes={topRatedRecipes} />
 
+          {/*See See All Recipes Button*/}
           <div className="mt-10 text-center">
             <a
               href="/recipes"
@@ -69,7 +84,16 @@ export default async function Home() {
               See All Recipes
             </a>
           </div>
+        </div>
+      </section>
+      {/* Meal Types Section */}
+      <section className="bg-white px-6 py-14 bg-orange-50">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center text-orange-600">
+            Your Meal, Your Way
+          </h2>
 
+          <MealTypeCards mealTypes={mealTypes} />
         </div>
       </section>
     </main>

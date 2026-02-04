@@ -18,7 +18,7 @@
 //         </p>
 
 //         <p className="mt-1 text-xs opacity-70">
-//           Cook • Enjoy • Share 🍳
+//           Cook • Enjoy • Share
 //         </p>
 
 //       </div>
@@ -26,22 +26,16 @@
 //   );
 // }
 
-
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-amber-400 to-orange-400 text-white mt-12">
+    <footer className="bg-gradient-to-r from-amber-400 to-orange-400 text-white">
       <div className="max-w-5xl mx-auto py-3 px-6 text-center">
-
         <p className="text-base font-medium">
-          &copy; {new Date().getFullYear()} Recipe React Next.js App
+          &copy; {new Date().getFullYear()} Midad Code Academy
         </p>
 
-        <p className=" text-sm font-light opacity-90">
-          Cook • Enjoy • Share 🍳
-        </p>
-
+        <p className=" text-sm font-light opacity-90">Cook • Enjoy • Share</p>
       </div>
     </footer>
   );
 }
-
